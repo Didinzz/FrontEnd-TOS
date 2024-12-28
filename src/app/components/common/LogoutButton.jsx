@@ -8,8 +8,8 @@ const LogoutButton = ({color, children}) => {
 
   const handleLogout = () => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'Do you want to log out?',
+      title: 'Apakah anda yakin?',
+      text: 'Apakah anda yakin ingin logout?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes',
@@ -17,7 +17,7 @@ const LogoutButton = ({color, children}) => {
     }).then((result) => {
       if (result.isConfirmed) {
         logout();
-        Swal.fire('Success', 'Logout successful', 'success');
+        Swal.fire('Success', 'Logout Berhasil', 'success');
         router.push('/login');
       }
     });

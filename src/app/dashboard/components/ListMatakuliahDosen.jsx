@@ -71,8 +71,10 @@ const ListMatakuliahDosen = ({ isLoading, listMatakuliah }) => {
                 onClick={() => handleDetailMatakuliah(mk.id)}
               >
                 <div className="bg-[#2c4b82] w-full h-fit rounded-tl-lg rounded-tr-lg font-semibold text-black-000 p-4">
-                  <div className="text-lg text-white capitalize">{mk.nama}</div>
-                  <div className="text-sm font-light text-white">
+                  <div className="text-lg text-white capitalize"> {/* Tambahkan efek scale di sini */}
+                    {mk.nama}
+                  </div>
+                  <div className="text-sm font-light text-white"> {/* Tambahkan efek scale di sini */}
                     Semester {mk.semester}
                   </div>
                 </div>
