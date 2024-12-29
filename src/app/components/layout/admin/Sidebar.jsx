@@ -5,31 +5,25 @@ import Button from '../../common/LogoutButton';
 
 export default function Navbar() {
   const router = useRouter();
+  const [activePage, setActivePage] = useState('');
+
+  const handleNavigation = (page) => {
+    setActivePage(page);
+    router.push(page);
+  }
 
   return (
     <nav className="w-full px-3 md:w-20 bg-white border min-h-screen flex md:flex-col items-start py-4 space-x-8 md:space-y-8 md:space-x-0">
-     
 
       {/* Menu Items */}
-      <div
-        className={` flex md:flex flex-col items-center justify-between w-full md:w-auto gap-10`}
-      >
-        <button
-          onClick={() => router.push('/admin')}
-          className="btn btn-ghost active:bg-gray-500"
-        >
+      <div className={` flex md:flex flex-col items-center justify-between w-full md:w-auto gap-10`}>
+        <button onClick={() => handleNavigation('/admin')} className={`btn btn-ghost ${activePage === '/admin' ? 'btn-active' : ''}`}>
           <FaHome size={20} />
         </button>
-        <button
-          onClick={() => router.push('/admin/matakuliah')}
-          className="btn btn-ghost"
-        >
+        <button onClick={() => handleNavigation('/admin/matakuliah')} className={`btn btn-ghost ${activePage === '/admin/matakuliah' ? 'btn-active' : ''}`}>
           <FaBook size={20} />
         </button>
-        <button
-          onClick={() => router.push('/admin/user')}
-          className="btn btn-ghost"
-        >
+        <button onClick={() => handleNavigation('/admin/user')} className={`btn btn-ghost ${activePage === '/admin/user' ? 'btn-active' : ''}`}>
           <FaUserAlt size={20} />
         </button>
 

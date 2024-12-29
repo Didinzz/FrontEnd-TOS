@@ -147,9 +147,9 @@ const EditMatakuliah = ({ listDosen, matakuliahId, getListMatakuliah, onRef }) =
             <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="semester">Semester</label>
             <input className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" type="number" id="semester" name="semester" value={semester} onChange={(e) => setSemester(e.target.value)} />
           </div>
-          <div className='flex justify-around w-full gap-5'>
-            <button type='button' className='btn w-1/2' onClick={handleCancle}>Batal</button>
-            <button type='submit' className="btn w-1/2 px-2 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" disabled={isLoading}>{isLoading ? 'menyimpan...' : 'Simpan'}</button>
+          <div className='flex justify-between w-full gap-2 min-w-0'>
+            <button type='button' className='btn flex-1' onClick={handleCancle}>Batal</button>
+            <button type='submit' className="btn flex-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" disabled={isLoading}>{isLoading ? 'menyimpan...' : 'Simpan'}</button>
           </div>
         </form>
       </div>
