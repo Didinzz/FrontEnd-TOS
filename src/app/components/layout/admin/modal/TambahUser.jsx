@@ -20,8 +20,6 @@ const TambahUser = ({ fetchAllUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(nama, email, password);
-    console.log(`Ini adalah role: ${role}`);
 
     // validasi form harus di isi
     if (!nama || !email || !password || !role) {

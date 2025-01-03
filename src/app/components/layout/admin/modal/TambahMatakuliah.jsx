@@ -45,7 +45,8 @@ const TambahMatakuliah = ({ listDosen, getListMatakuliah, onRef }) => {
 
     try {
       const response = await addMatakuliah(payload);
-
+      
+      modalRef.current.close(); // Tutup modal
       Swal.fire('Success', response.message, 'success');
       setNama('');
       setKode('');
@@ -56,7 +57,6 @@ const TambahMatakuliah = ({ listDosen, getListMatakuliah, onRef }) => {
       Swal.fire('Error', error.message, 'error');
     } finally {
       setIsLoading(false);
-      modalRef.current.close(); // Tutup modal
     }
   }
 
