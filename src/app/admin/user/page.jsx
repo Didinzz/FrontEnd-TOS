@@ -39,7 +39,7 @@ const Page = () => {
           try {
             // Proses delete
             const response = await deleteUser(id);
-            if (response.status === 200) {
+            if (response.status === 'ok') {
               fetchAllUser(); // Refresh data setelah delete berhasil
               Swal.fire('Success', response.message, 'success');
             } else {
@@ -51,7 +51,7 @@ const Page = () => {
           }
         },
       });
-  
+
       if (result.isConfirmed) {
         console.log('Data berhasil dihapus.');
       }
@@ -60,7 +60,7 @@ const Page = () => {
       Swal.fire('Error!', 'Terjadi kesalahan.', 'error');
     }
   };
-  
+
 
   const onEditHandle = (id) => {
     setUserId(id);
@@ -82,8 +82,8 @@ const Page = () => {
     fetchAllUser();
   }, []);
 
-  const filteredUser = listUser.filter((user)=> 
-    user.nama.toLowerCase().includes(searchTerm.toLowerCase())|| 
+  const filteredUser = listUser.filter((user) =>
+    user.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.role.toLowerCase().includes(searchTerm.toLowerCase())
   )
@@ -92,20 +92,20 @@ const Page = () => {
       <div className="space-y-4">
         <main className="flex-1 p-6">
           <h2 className="text-2xl font-bold mb-4">Daftar Pengguna</h2>
-          {/* <button className="btn btn-ghost bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mb-4"  onClick={() => document.getElementById('tambahUser').showModal()}>+ Tambah pengguna</button> */}
-            <label className="input input-bordered flex items-center gap-2 mb-5 w-2/6">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="h-4 w-4 opacity-70">
-                <path
-                  fillRule="evenodd"
-                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                  clipRule="evenodd" />
-              </svg>
-              <input type="text" className="grow w-2/6" placeholder="[nama, email, role]" onChange={(e) => debounceSetSearchTerm(e.target.value)}/>
-            </label>
+          {/* <button className="btn btn-ghost bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mb-4" onClick={() => document.getElementById('tambahUser').showModal()}>+ Tambah pengguna</button> */}
+          <label className="input input-bordered flex items-center gap-2 mb-5 w-2/6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70">
+              <path
+                fillRule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clipRule="evenodd" />
+            </svg>
+            <input type="text" className="grow w-2/6" placeholder="[nama, email, role]" onChange={(e) => debounceSetSearchTerm(e.target.value)} />
+          </label>
           <div className="bg-white shadow rounded overflow-hidden">
             <table className="min-w-full bg-white">
               <thead>
@@ -122,7 +122,7 @@ const Page = () => {
                   <tr>
                     <td colSpan={5} className='text-center font-semibold py-1'>Tidak ada pengguna</td>
                   </tr>
-                ): (
+                ) : (
                   filteredUser.map((user, index) => (
                     <ContentTable key={index} user={user} count={index + 1} onEditHandle={onEditHandle} handleDelteUser={handleDelteUser} />
                   ))
@@ -132,7 +132,7 @@ const Page = () => {
           </div>
         </main>
       </div>
-      <TambahUser fetchAllUser={fetchAllUser}/>
+      <TambahUser fetchAllUser={fetchAllUser} />
       <EditUser userId={userId} fetchAllUser={fetchAllUser} />
     </main>
   )

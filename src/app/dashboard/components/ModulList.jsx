@@ -28,7 +28,7 @@ const modulList = ({ modul, handleReadModul, handleDonwloadModul, role, fetchMat
                 preConfirm: async () => {
                     try {
                         const response = await deleteModul(id);
-                        if (response.status !== 200) {
+                        if (response.status !== 'ok') {
                             throw new Error(response.message || 'Penghapusan gagal');
                         }
                         await fetchMatakuliahById();

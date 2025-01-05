@@ -81,7 +81,7 @@ const Page = () => {
           try {
             // Proses delete
             const response = await deleteMatakuliah(id);
-            if (response.status === 200) {
+            if (response.status === 'ok') {
               await getListMatakuliah(); // Refresh data setelah delete berhasil
               Swal.fire('Success', response.message, 'success');
             } else {
@@ -93,16 +93,11 @@ const Page = () => {
           }
         },
       });
-  
-      if (result.isConfirmed) {
-        console.log('Data berhasil dihapus.');
-      }
     } catch (error) {
-      console.error('Error delete matakuliah:', error.message);
       Swal.fire('Error!', 'Terjadi kesalahan.', 'error');
     }
   };
-  
+
 
   const filteredMatakuliah = listMatakuliah.filter((matakuliah) =>
     matakuliah.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -156,16 +151,16 @@ const Page = () => {
           </div>
         </main>
       </div>
-      <TambahMatakuliah 
-      listDosen={listDosen} 
-      getListMatakuliah={getListMatakuliah} 
-      onRef={(controller) => (modalTambahControllerRef.current = controller)}
+      <TambahMatakuliah
+        listDosen={listDosen}
+        getListMatakuliah={getListMatakuliah}
+        onRef={(controller) => (modalTambahControllerRef.current = controller)}
       />
-      <EditMatakuliah 
-      listDosen={listDosen} 
-      matakuliahId={selectMatakuliah} 
-      getListMatakuliah={getListMatakuliah}  
-      onRef={(controller) => (modalControllerRef.current = controller)} />
+      <EditMatakuliah
+        listDosen={listDosen}
+        matakuliahId={selectMatakuliah}
+        getListMatakuliah={getListMatakuliah}
+        onRef={(controller) => (modalControllerRef.current = controller)} />
 
     </main>
 

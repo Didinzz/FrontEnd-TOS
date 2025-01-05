@@ -65,7 +65,6 @@ const Page = () => {
                 alert('URL file tidak ditemukan.');
             }
         } catch (error) {
-            console.log('Error downloading file:', error.message);
             alert('Gagal mengunduh modul');
         }
     };
@@ -87,8 +86,6 @@ const Page = () => {
             </div>
         )
     }
-
-    console.log(listModul);
 
     return (
         <div className="mx-auto my-10 p-4 w-4/6">
